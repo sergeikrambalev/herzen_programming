@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lab_3/prog_lab_3.md",
+                "file": "lab_4/prog_lab_4.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "prog_lab_3"
+              "title": "prog_lab_4"
             }
           }
         ]
@@ -185,18 +185,19 @@
   },
   "active": "3c75b4005d09fb57",
   "lastOpenFiles": [
-    "lab_2/prog_lab_2.md",
     "lab_3/prog_lab_3.md",
-    "lab_3/task_2_4",
-    "lab_3/task_2_4.c",
-    "lab_3/task_2_3",
-    "lab_3/task_2_3.c",
-    "lab_3/task_2_2",
-    "lab_3/task_2_2.c",
-    "lab_3/task_2_1",
-    "lab_3/task_2_1.c",
-    "lab_3/task_1_5",
-    "lab_3/task_1_5.c",
+    "lab_4/prog_lab_4.md",
+    "lab_4/task_2_3",
+    "lab_4/task_2_3.c",
+    "lab_4/task_2_2",
+    "lab_4/task_2_2.c",
+    "lab_4/task_2_1",
+    "lab_4/task_2_1.c",
+    "lab_4/task_1_4",
+    "lab_4/task_1_4.c",
+    "lab_4/task_1_3",
+    "lab_4/task_1_3.c",
+    "lab_2/prog_lab_2.md",
     "lab_1/prog_lab_1.md"
   ]
 }
