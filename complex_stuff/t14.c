@@ -4,15 +4,14 @@
 #include <string.h>
 
 #include <unistd.h>
-#define DELAY_MS 10
-#define delay() usleep(DELAY_MS * 1000)
+#define delay() usleep(10000)
 
 #define BUFFER_SIZE 4096
 
 int main(int argc, char *argv[]) {
   if (argc != 3) {
     fprintf(stderr, "Usage: %s <file> <destination>\n", argv[0]);
-    return EXIT_FAILURE;
+    return 1;
   }
 
   const char *src_path = argv[1];
@@ -21,20 +20,20 @@ int main(int argc, char *argv[]) {
   FILE *f_in = fopen(src_path, "rb");
   if (!f_in) {
     fprintf(stderr, "Filed to open file '%s': %s\n", src_path, strerror(errno));
-    return EXIT_FAILURE;
+    return 1;
   }
 
   if (fseek(f_in, 0, SEEK_END) != 0) {
     fprintf(stderr, "Positioning failure: %s\n", strerror(errno));
     fclose(f_in);
-    return EXIT_FAILURE;
+    return 1;
   }
 
   long size = ftell(f_in);
   if (size < 0) {
     fprintf(stderr, "Failed to get file size: %s\n", strerror(errno));
     fclose(f_in);
-    return EXIT_FAILURE;
+    return 1;
   }
   rewind(f_in);
 
@@ -43,7 +42,7 @@ int main(int argc, char *argv[]) {
     fprintf(stderr, "Failed to open file '%s': %s\n", dst_path,
             strerror(errno));
     fclose(f_in);
-    return EXIT_FAILURE;
+    return 1;
   }
 
   char *buffer = malloc(BUFFER_SIZE);
@@ -51,7 +50,7 @@ int main(int argc, char *argv[]) {
     fprintf(stderr, "Failed to allocate memory for buffer\n");
     fclose(f_in);
     fclose(f_out);
-    return EXIT_FAILURE;
+    return 1;
   }
 
   long bytes_copied = 0;
@@ -73,7 +72,7 @@ int main(int argc, char *argv[]) {
       free(buffer);
       fclose(f_in);
       fclose(f_out);
-      return EXIT_FAILURE;
+      return 1;
     }
 
     size_t bytes_write = fwrite(buffer, 1, bytes_read, f_out);
@@ -82,7 +81,7 @@ int main(int argc, char *argv[]) {
       free(buffer);
       fclose(f_in);
       fclose(f_out);
-      return EXIT_FAILURE;
+      return 1;
     }
 
     bytes_copied += bytes_write;
@@ -118,5 +117,5 @@ int main(int argc, char *argv[]) {
   fclose(f_in);
   fclose(f_out);
 
-  return EXIT_SUCCESS;
+  return 0;
 }
